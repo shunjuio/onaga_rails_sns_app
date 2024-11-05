@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get "static_pages/home"
-  get "static_pages/help"
+  get "home/top"
+  get "home/about"
   resources :posts do
     resources :comments, only: [:create, :new]
   end
