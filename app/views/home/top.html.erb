@@ -1,6 +1,10 @@
 <div class="main top-main">
   <div class="top-message">
-    <h2>TOP</h2>
-    <p>List1</p>
+    <h1>TOP</h1>
+    <% if logged_in? %>
+      <%= render 'posts/index' %>
+    <% else %>
+      <%= render 'home/not_logged_in' %>
+    <% end %>
   </div>
 </div>
