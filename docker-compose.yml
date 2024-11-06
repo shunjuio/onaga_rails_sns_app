@@ -6,11 +6,11 @@ services:
       TZ: "Asia/Tokyo"
     volumes:
       - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
-      - ./docker/db/data:/var/lib/mysql
+      - mysql-volume:/var/lib/mysql
     ports:
       - '3306:3306'
     restart: always
-  api:
+  app:
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
@@ -23,3 +23,6 @@ services:
       - db
     stdin_open: true
     tty: true
+
+volumes:
+  mysql-volume:
