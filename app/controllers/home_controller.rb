@@ -5,7 +5,8 @@ class HomeController < ApplicationController
   end
 
   def top
-    'hoge'
+    @posts = Post.all
+    render layout: "application"
   end
 
   def about

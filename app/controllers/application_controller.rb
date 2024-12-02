@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
+  def after_sign_out_path_for(resource_or_scope)
+    root_path
+  end
 end

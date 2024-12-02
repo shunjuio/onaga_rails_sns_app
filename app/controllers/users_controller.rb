@@ -58,13 +58,18 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:name, :email, :password)
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    if params[:id] =~ /^\d+$/ # IDが数字の場合のみ検索
+      @user = User.find(params[:id])
+    else
+      redirect_to root_path, alert: "Invalid user ID"
     end
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
 end

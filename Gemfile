@@ -51,7 +51,11 @@ group :development do
   gem "web-console"
 end
 
+gem "devise"
+
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 
 gem "graphql", "~> 2.4"
 gem "graphiql-rails", group: :development
-gem 'graphql-voyager-rails'
+gem "graphql-voyager-rails"

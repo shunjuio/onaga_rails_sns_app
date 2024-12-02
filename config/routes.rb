@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords',
+    confirmations: 'users/confirmations',
+    unlocks: 'users/unlocks',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
+  resources :users, only: [:show, :edit, :update, :destroy]
+  root "home#top"
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  get "/signup", to: "users#new"
 
-  get "home/register"
   get "home/top"
   get "home/about"
   resources :posts do
